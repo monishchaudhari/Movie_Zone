@@ -7,7 +7,7 @@
 
 import UIKit
 
-class SearchedMoviesListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate {
+class SearchedMoviesListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     //MARK: - IBOutlets
     @IBOutlet weak var topNavView: UIView!
@@ -16,7 +16,7 @@ class SearchedMoviesListViewController: UIViewController, UICollectionViewDataSo
     @IBOutlet weak var resultsCollectionView: UICollectionView!
     
     //MARK: - Local Variables
-    var dataSourceArray = [AnyObject]()
+    private var movieArray = [Movie]()
     
     //MARK: - Life Cycle Methodes
     override func viewDidLoad() {
@@ -48,17 +48,35 @@ class SearchedMoviesListViewController: UIViewController, UICollectionViewDataSo
     //MARK: - IBActions
     
     //MARK: - Other Methodes
+    func setSearchedMovies(_ movies: [Movie]) {
+        movieArray = movies
+        
+        DispatchQueue.main.async {
+            self.resultsCollectionView.reloadData()
+        }
+    }
     
     //MARK: - Delegates
     
     //MARK: - CollectionView Delegates
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return dataSourceArray.count
+        return movieArray.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SearchedMoviesListCollectionViewCell", for: indexPath) as! SearchedMoviesListCollectionViewCell
+        let movie = movieArray[indexPath.row]
+        cell.movie = movie
+        cell.movieThumbImgView.tag = indexPath.row
+        
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.frame.width/2) - 10
+        let height = (width/2) * 3.5
+        return CGSize(width: width, height: height)
+    }
+
     
 }

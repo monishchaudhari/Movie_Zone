@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4738467D298E4951000BB3F0 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4738467C298E4951000BB3F0 /* Movie.swift */; };
+		4738467F298E5B29000BB3F0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4738467E298E5B29000BB3F0 /* Extensions.swift */; };
 		476E1263298D3C4800E3762B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476E1262298D3C4800E3762B /* AppDelegate.swift */; };
 		476E1267298D3C4800E3762B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476E1266298D3C4800E3762B /* ViewController.swift */; };
 		476E126A298D3C4800E3762B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476E1268298D3C4800E3762B /* Main.storyboard */; };
@@ -19,6 +21,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4738467C298E4951000BB3F0 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
+		4738467E298E5B29000BB3F0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		476E125F298D3C4800E3762B /* Movie Zone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Zone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		476E1262298D3C4800E3762B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		476E1266298D3C4800E3762B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -77,6 +81,7 @@
 		476E1278298D3D1900E3762B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4738467C298E4951000BB3F0 /* Movie.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -104,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				476E1276298D3D0E00E3762B /* APIManager.swift */,
+				4738467E298E5B29000BB3F0 /* Extensions.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -182,9 +188,11 @@
 			files = (
 				476E1277298D3D0E00E3762B /* APIManager.swift in Sources */,
 				476E1267298D3C4800E3762B /* ViewController.swift in Sources */,
+				4738467D298E4951000BB3F0 /* Movie.swift in Sources */,
 				476E1281298D55B500E3762B /* SearchedMoviesListCollectionViewCell.swift in Sources */,
 				476E127F298D4ECB00E3762B /* SearchedMoviesListViewController.swift in Sources */,
 				476E1263298D3C4800E3762B /* AppDelegate.swift in Sources */,
+				4738467F298E5B29000BB3F0 /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,7 +349,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -372,7 +380,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

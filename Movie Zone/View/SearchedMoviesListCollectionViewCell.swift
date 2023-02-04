@@ -16,6 +16,12 @@ class SearchedMoviesListCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var otherInfoLbl: UILabel!
     
     //MARK: - Local Variables
+    var movie: Movie? {
+        didSet {
+            movieNameLbl.text = movie?.Title
+            otherInfoLbl.text = movie?.Year
+        }
+    }
     
     //MARK: - Life Cycle Methodes
     override func awakeFromNib() {
