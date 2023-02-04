@@ -7,6 +7,7 @@
 
 import UIKit
 import Kingfisher
+import MBProgressHUD
 
 class SearchedMoviesListViewController: UIViewController, UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
@@ -18,6 +19,7 @@ class SearchedMoviesListViewController: UIViewController, UICollectionViewDataSo
     
     //MARK: - Local Variables
     private var movieArray = [Movie]()
+    var searchedText = ""
     
     //MARK: - Life Cycle Methodes
     override func viewDidLoad() {
@@ -32,6 +34,7 @@ class SearchedMoviesListViewController: UIViewController, UICollectionViewDataSo
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        showingResultLbl.text = "Showing results for '\(searchedText.trimmingCharacters(in: .whitespacesAndNewlines))'"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -47,6 +50,9 @@ class SearchedMoviesListViewController: UIViewController, UICollectionViewDataSo
     }
     
     //MARK: - IBActions
+    @IBAction func didTapBackBtn(_ sender: UIButton) {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     //MARK: - Other Methodes
     func setSearchedMovies(_ movies: [Movie]) {
@@ -55,6 +61,53 @@ class SearchedMoviesListViewController: UIViewController, UICollectionViewDataSo
         DispatchQueue.main.async {
             self.resultsCollectionView.reloadData()
         }
+    }
+    
+    private func fetchMovieDetails(for imdbID: String) {
+        
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
+        _ = APIManager.shared.makeAPICall(
+            endPoint: APIManager.shared.searchByIMDBId + imdbID,
+            method: .GET,
+            requestBody: nil) { data, error, response in
+                DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
+                if let httpResponse = response as? HTTPURLResponse, let responseData = data {
+                    switch httpResponse.statusCode {
+                    case 200:
+                        do {
+                            let decoder = JSONDecoder()
+                            decoder.keyDecodingStrategy = .useDefaultKeys
+                            let decodedResponse = try decoder.decode(Movie.self, from: responseData)
+                            if decodedResponse.Response?.caseInsensitiveCompare("False") == .orderedSame {
+                                DispatchQueue.main.async {
+                                    self.showAlert("", alert_message: decodedResponse.Error ?? "Details for selected movie are not available.")
+                                }
+                            } else {
+                                DispatchQueue.main.async {
+                                let movieDetailsVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "MovieDetailsViewController") as! MovieDetailsViewController
+                                    self.present(movieDetailsVC, animated: true) {
+                                        movieDetailsVC.updateMovieDetails(decodedResponse)
+                                    }
+                                }
+                            }
+                            
+                        } catch let error {
+                            DispatchQueue.main.async {
+                                self.showAlert("Cannot fetch movie", alert_message: error.localizedDescription)
+                            }
+                        }
+                        break
+                    default:
+                        DispatchQueue.main.async {
+                            self.showAlert("Failed to fetch movies", alert_message: httpResponse.description)
+                        }
+                        break
+                    }
+                }
+            }
     }
     
     //MARK: - Delegates
@@ -79,5 +132,8 @@ class SearchedMoviesListViewController: UIViewController, UICollectionViewDataSo
         return CGSize(width: width, height: height)
     }
 
-    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        self.fetchMovieDetails(for: movieArray[indexPath.row].imdbID ?? "")
+        collectionView.deselectItem(at: indexPath, animated: true)
+    }
 }

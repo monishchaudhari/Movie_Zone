@@ -11,6 +11,7 @@
 		4738467F298E5B29000BB3F0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4738467E298E5B29000BB3F0 /* Extensions.swift */; };
 		47384682298E6611000BB3F0 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 47384681298E6611000BB3F0 /* MBProgressHUD */; };
 		47384685298E6651000BB3F0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 47384684298E6651000BB3F0 /* Kingfisher */; };
+		47661292298EC32F00BC629B /* MovieDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47661291298EC32F00BC629B /* MovieDetailsViewController.swift */; };
 		476E1263298D3C4800E3762B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476E1262298D3C4800E3762B /* AppDelegate.swift */; };
 		476E1267298D3C4800E3762B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476E1266298D3C4800E3762B /* ViewController.swift */; };
 		476E126A298D3C4800E3762B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476E1268298D3C4800E3762B /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 /* Begin PBXFileReference section */
 		4738467C298E4951000BB3F0 /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		4738467E298E5B29000BB3F0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		47661291298EC32F00BC629B /* MovieDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsViewController.swift; sourceTree = "<group>"; };
 		476E125F298D3C4800E3762B /* Movie Zone.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movie Zone.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		476E1262298D3C4800E3762B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		476E1266298D3C4800E3762B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				476E1266298D3C4800E3762B /* ViewController.swift */,
 				476E127E298D4ECB00E3762B /* SearchedMoviesListViewController.swift */,
+				47661291298EC32F00BC629B /* MovieDetailsViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47661292298EC32F00BC629B /* MovieDetailsViewController.swift in Sources */,
 				476E1277298D3D0E00E3762B /* APIManager.swift in Sources */,
 				476E1267298D3C4800E3762B /* ViewController.swift in Sources */,
 				4738467D298E4951000BB3F0 /* Movie.swift in Sources */,

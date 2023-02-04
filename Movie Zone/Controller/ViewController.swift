@@ -92,6 +92,7 @@ class ViewController: UIViewController {
                             } else {
                                 DispatchQueue.main.async {
                                 let searchedListVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "SearchedMoviesListViewController") as! SearchedMoviesListViewController
+                                    searchedListVC.searchedText = searchedTxt
                                     self.navigationController?.pushViewController(searchedListVC, animated: true)
                                     searchedListVC.setSearchedMovies(decodedResponse.Search ?? [Movie]())
                                 }

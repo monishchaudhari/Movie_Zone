@@ -48,6 +48,7 @@ struct Movie: Codable {
     var Production: String?
     var Website: String?
     var Response: String?
+    var Error: String?
 }
 
 struct Ratings: Codable {
