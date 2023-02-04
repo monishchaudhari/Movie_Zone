@@ -54,7 +54,15 @@ class ViewController: UIViewController {
         resignFirstResponder()
         
         if movieNameTxtFld.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? false {
+            
+            let animation = CABasicAnimation(keyPath: "position")
+            animation.duration = 0.07
+            animation.repeatCount = 2
+            animation.autoreverses = true
+            animation.fromValue = NSValue(cgPoint: CGPoint(x: self.movieNameTxtFld.center.x - 10, y: self.movieNameTxtFld.center.y))
+            animation.toValue = NSValue(cgPoint: CGPoint(x: self.movieNameTxtFld.center.x + 10, y: self.movieNameTxtFld.center.y))
             DispatchQueue.main.async {
+                self.movieNameTxtFld.layer.add(animation, forKey: "position")
                 self.movieNameTxtFld.becomeFirstResponder()
             }
             return
@@ -87,7 +95,7 @@ class ViewController: UIViewController {
                             
                             if decodedResponse.Response?.caseInsensitiveCompare("False") == .orderedSame {
                                 DispatchQueue.main.async {
-                                    self.showAlert("", alert_message: decodedResponse.Error ?? "Please enter valid movie name")
+                                    self.showAlert("", alert_message: decodedResponse.Error ?? "Please try with different movie name")
                                 }
                             } else {
                                 DispatchQueue.main.async {

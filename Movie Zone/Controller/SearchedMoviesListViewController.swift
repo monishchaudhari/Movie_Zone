@@ -83,7 +83,7 @@ class SearchedMoviesListViewController: UIViewController, UICollectionViewDataSo
                             let decodedResponse = try decoder.decode(Movie.self, from: responseData)
                             if decodedResponse.Response?.caseInsensitiveCompare("False") == .orderedSame {
                                 DispatchQueue.main.async {
-                                    self.showAlert("", alert_message: decodedResponse.Error ?? "Details for selected movie are not available.")
+                                    self.showAlert("", alert_message: decodedResponse.Error ?? "Could not load details for selected movie.")
                                 }
                             } else {
                                 DispatchQueue.main.async {

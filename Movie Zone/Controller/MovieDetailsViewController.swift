@@ -53,6 +53,7 @@ class MovieDetailsViewController: UIViewController {
         super.viewDidLoad()
         
         imdbRatingBGView.makeRoundedCorners()
+        moviePosterImgView.layer.cornerRadius = 5.0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -92,25 +93,25 @@ class MovieDetailsViewController: UIViewController {
         
         movieNameLbl.text = movie.Title
         genereLbl.text = movie.Genre
-        durationLbl.text = "Duration: " + (movie.Runtime ?? "0 min")
+        durationLbl.text = "Duration: \(movie.Runtime ?? "0 min") | \(movie.Rated ?? "") rated"
         
-        releasedDateLbl.text = movie.Released ?? ""
-        directorNameLbl.text = movie.Director ?? ""
-        writerNameLbl.text = movie.Writer ?? ""
-        actorNameLbl.text = movie.Actors ?? ""
+        releasedDateLbl.text = movie.Released ?? "Not available"
+        directorNameLbl.text = movie.Director ?? "Not available"
+        writerNameLbl.text = movie.Writer ?? "Not available"
+        actorNameLbl.text = movie.Actors ?? "Not available"
         
-        plotLbl.text = movie.Plot ?? ""
-        languageLbl.text = movie.Language ?? ""
-        countryLbl.text = movie.Country ?? ""
-        awardsLbl.text = movie.Awards ?? ""
+        plotLbl.text = movie.Plot ?? "Not available"
+        languageLbl.text = movie.Language ?? "Not available"
+        countryLbl.text = movie.Country ?? "Not available"
+        awardsLbl.text = movie.Awards ?? "Not available"
         
-        boxOfficeRatingLbl.text = movie.BoxOffice
-        imdbRatingLbl.text = movie.imdbRating
-        imdbVotesLbl.text = movie.imdbVotes
-        metascoreLbl.text = movie.Metascore
-        internetMovieDBRatingLbl.text = movie.Ratings?.first(where: {$0.Source == "Internet Movie Database"})?.Value ?? ""
-        rottenTomatoesRatingLbl.text = movie.Ratings?.first(where: {$0.Source == "Rotten Tomatoes"})?.Value ?? ""
-        metacriticRatingLbl.text = movie.Ratings?.first(where: {$0.Source == "Metacritic"})?.Value ?? ""
+        boxOfficeRatingLbl.text = movie.BoxOffice ?? "Not available"
+        imdbRatingLbl.text = movie.imdbRating ?? "Not available"
+        imdbVotesLbl.text = movie.imdbVotes ?? "Not available"
+        metascoreLbl.text = movie.Metascore ?? "Not available"
+        internetMovieDBRatingLbl.text = movie.Ratings?.first(where: {$0.Source == "Internet Movie Database"})?.Value ?? "Not available"
+        rottenTomatoesRatingLbl.text = movie.Ratings?.first(where: {$0.Source == "Rotten Tomatoes"})?.Value ?? "Not available"
+        metacriticRatingLbl.text = movie.Ratings?.first(where: {$0.Source == "Metacritic"})?.Value ?? "Not available"
         
     }
     
