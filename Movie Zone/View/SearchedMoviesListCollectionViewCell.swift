@@ -20,13 +20,15 @@ class SearchedMoviesListCollectionViewCell: UICollectionViewCell {
         didSet {
             movieNameLbl.text = movie?.Title
             otherInfoLbl.text = movie?.Year
+            let url = URL(string: movie?.Poster ?? "")
+            movieThumbImgView.kf.setImage(with: url)
         }
     }
     
     //MARK: - Life Cycle Methodes
     override func awakeFromNib() {
         super.awakeFromNib()
-        //
+        self.layer.cornerRadius = 5.0
     }
     
     //MARK: - IBActions

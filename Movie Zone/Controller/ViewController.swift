@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MBProgressHUD
 
 class ViewController: UIViewController {
     
@@ -67,10 +68,15 @@ class ViewController: UIViewController {
     private func searchMovies() {
         let searchedTxt = movieNameTxtFld.text?.trimmingCharacters(in: .whitespacesAndNewlines) ?? ""
         
+        MBProgressHUD.showAdded(to: self.view, animated: true)
+        
         _ = APIManager.shared.makeAPICall(
             endPoint: APIManager.shared.searchMovies + searchedTxt,
             method: .GET,
             requestBody: nil) { data, error, response in
+                DispatchQueue.main.async {
+                    MBProgressHUD.hide(for: self.view, animated: true)
+                }
                 if let httpResponse = response as? HTTPURLResponse, let responseData = data {
                     switch httpResponse.statusCode {
                     case 200:
@@ -84,8 +90,8 @@ class ViewController: UIViewController {
                                     self.showAlert("", alert_message: decodedResponse.Error ?? "Please enter valid movie name")
                                 }
                             } else {
-                                let searchedListVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "SearchedMoviesListViewController") as! SearchedMoviesListViewController
                                 DispatchQueue.main.async {
+                                let searchedListVC = UIStoryboard(name: "Main", bundle: .main).instantiateViewController(withIdentifier: "SearchedMoviesListViewController") as! SearchedMoviesListViewController
                                     self.navigationController?.pushViewController(searchedListVC, animated: true)
                                     searchedListVC.setSearchedMovies(decodedResponse.Search ?? [Movie]())
                                 }

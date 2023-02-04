@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		4738467D298E4951000BB3F0 /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4738467C298E4951000BB3F0 /* Movie.swift */; };
 		4738467F298E5B29000BB3F0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4738467E298E5B29000BB3F0 /* Extensions.swift */; };
+		47384682298E6611000BB3F0 /* MBProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 47384681298E6611000BB3F0 /* MBProgressHUD */; };
+		47384685298E6651000BB3F0 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 47384684298E6651000BB3F0 /* Kingfisher */; };
 		476E1263298D3C4800E3762B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476E1262298D3C4800E3762B /* AppDelegate.swift */; };
 		476E1267298D3C4800E3762B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 476E1266298D3C4800E3762B /* ViewController.swift */; };
 		476E126A298D3C4800E3762B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 476E1268298D3C4800E3762B /* Main.storyboard */; };
@@ -41,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47384685298E6651000BB3F0 /* Kingfisher in Frameworks */,
+				47384682298E6611000BB3F0 /* MBProgressHUD in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -130,6 +134,10 @@
 			dependencies = (
 			);
 			name = "Movie Zone";
+			packageProductDependencies = (
+				47384681298E6611000BB3F0 /* MBProgressHUD */,
+				47384684298E6651000BB3F0 /* Kingfisher */,
+			);
 			productName = "Movie Zone";
 			productReference = 476E125F298D3C4800E3762B /* Movie Zone.app */;
 			productType = "com.apple.product-type.application";
@@ -158,6 +166,10 @@
 				Base,
 			);
 			mainGroup = 476E1256298D3C4800E3762B;
+			packageReferences = (
+				47384680298E6611000BB3F0 /* XCRemoteSwiftPackageReference "MBProgressHUD" */,
+				47384683298E6651000BB3F0 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 476E1260298D3C4800E3762B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -416,6 +428,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		47384680298E6611000BB3F0 /* XCRemoteSwiftPackageReference "MBProgressHUD" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jdg/MBProgressHUD.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+		47384683298E6651000BB3F0 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		47384681298E6611000BB3F0 /* MBProgressHUD */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47384680298E6611000BB3F0 /* XCRemoteSwiftPackageReference "MBProgressHUD" */;
+			productName = MBProgressHUD;
+		};
+		47384684298E6651000BB3F0 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 47384683298E6651000BB3F0 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 476E1257298D3C4800E3762B /* Project object */;
 }
